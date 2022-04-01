@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>KGtoPG | {% block title %}{% endblock %}</title>
+
+	{% block csscontent %}
+	{% endblock %}
+</head>
+
+<body>
+	{% block pagecontent %}
+	{% endblock %}
+
+
+	{% block jscontent %}
+	{% endblock %}
+</body>
+
+</html>
+
+
+<form action="{% url 'like-post'%}" method="POST">
+	{% csrf_token %}
+
+	<div class="like-one">
+		<input type="hidden" name="id" value="{{post.id}}" required>
+		<button class="like">
+			<i class="fa fa-thumbs-o-up" aria-hidden="true">
+				<span class="num1">{{ total_likes }}</span></i>
+
+
+		</button>
+		<!-- <button type="submit" class="btn btn-primary btn-sm">Like</button> - {{ total_likes }} Likes -->
+	</div>
+</form> -->
+<form action="{% url 'dislike-post'  %}" method="POST">
+	{% csrf_token %}
+	<input type="hidden" name="id" value="{{post.id}}" required>
+	<button type="submit" class="btn btn-primary btn-sm">Dislike</button> - {{ total_dislikes }}
+	DisLikes
+</form>
